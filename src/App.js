@@ -6,6 +6,7 @@ import { LARGE, SMALL } from 'material-ui/utils/withWidth';
 import Header from './components/Header.jsx';
 import LeftDrawer from './components/LeftDrawer.jsx';
 import CreateEvent from './containers/CreateEvent.jsx';
+import SimpleForm from './containers/SimpleForm';
 
 class App extends Component {
 
@@ -66,6 +67,10 @@ class App extends Component {
               <Route
                 path="/events/new"
                 component={CreateEvent}
+              />
+              <Route
+                  path="/events/old"
+                  component={SimpleForm}
               />
             </Switch>
           </div>
