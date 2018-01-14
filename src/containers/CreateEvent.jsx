@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import PropTypes from 'prop-types';
+import TimePicker from 'material-ui/TimePicker';
 
 class CreateEvent extends Component {
 
@@ -52,13 +53,11 @@ class CreateEvent extends Component {
              onChange = {(event, newValue) => this.setState({ name: newValue }) }
            />
            <br/>
-           <TextField
-             style={{margin: 'auto', width: '100%'}}
-             hintText="Time"
-             floatingLabelText="Time"
-             onChange = {(event, newValue) => this.setState({ time: newValue })}
-           />
-           <br/>
+            <TimePicker
+                hintText="Event Time"
+                onChange = {(event, newValue) => this.setState({ time: newValue }) }
+            />
+            <br/>
            {SizeSelectField}
            <br/>
            <RaisedButton
