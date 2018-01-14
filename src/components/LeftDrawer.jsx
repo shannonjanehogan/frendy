@@ -6,6 +6,7 @@ import SocialIcon from 'material-ui/svg-icons/social/group';
 import LocationIcon from 'material-ui/svg-icons/social/location-city';
 import PersonAddIcon from 'material-ui/svg-icons/social/person-add';
 import { spacing, typography } from 'material-ui/styles';
+import { Link } from 'react-router-dom';
 
 class LeftDrawer extends Component {
   render() {
@@ -55,6 +56,7 @@ class LeftDrawer extends Component {
             style={{fontSize: 14}}
             primaryText={'Create Event'}
             leftIcon={(<SocialIcon/>)}
+            containerElement={<Link to={'/events/new'} />}
           />
         </div>
       </Drawer>

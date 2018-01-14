@@ -11,33 +11,35 @@ class CreateEvent extends Component {
     super(props);
     this.state = {
       name: "",
+      time: "",
+      location: "",
+      size: "0_10",
     };
-    this.handleDebatePreferenceChange = this.handleDebatePreferenceChange.bind(this);
+    this.handleSizeChange = this.handleSizeChange.bind(this);
     this.handleCreateEventClick = this.handleCreateEventClick.bind(this);
   }
 
-  handleDebatePreferenceChange = (event, index, value) => {
+  handleSizeChange = (event, index, value) => {
     const state = this.state;
-    state.debater_preference = value;
+    state.size = value;
     this.setState({ state });
   }
 
   handleCreateEventClick(event) {
     event.preventDefault();
-    this.props.actions.debateSignup(this.state);
   }
 
   render() {
-    const debatePreferenceSelectField =  (
+    const SizeSelectField =  (
       <SelectField
         style={{margin: 'auto', width: '100%'}}
-        floatingLabelText="Debate Preference"
-        value={this.state.debater_preference}
-        onChange={this.handleDebatePreferenceChange}
+        floatingLabelText="Event Size"
+        value={this.state.size}
+        onChange={this.handleSizeChange}
       >
-        <MenuItem value={'debate'} primaryText="Debate" />
-        <MenuItem value={'judge'} primaryText="Judge" />
-        <MenuItem value={'debate_or_judge'} primaryText="Indifferent" />
+        <MenuItem value={'0_10'} primaryText="0-10 people" />
+        <MenuItem value={'10_30'} primaryText="10-30 people" />
+        <MenuItem value={'30'} primaryText="30+ people" />
       </SelectField>
     );
     return (
@@ -45,22 +47,22 @@ class CreateEvent extends Component {
         <div style={{margin: 'auto', width: '50%'}}>
            <TextField
              style={{margin: 'auto', width: '100%'}}
-             hintText="Enter your name"
+             hintText="Name"
              floatingLabelText="Name"
              onChange = {(event, newValue) => this.setState({ name: newValue }) }
            />
            <br/>
            <TextField
              style={{margin: 'auto', width: '100%'}}
-             hintText="Enter your partner preference"
-             floatingLabelText="Partner Preference"
-             onChange = {(event, newValue) => this.setState({ partner_preference: newValue })}
+             hintText="Time"
+             floatingLabelText="Time"
+             onChange = {(event, newValue) => this.setState({ time: newValue })}
            />
            <br/>
-           {debatePreferenceSelectField}
+           {SizeSelectField}
            <br/>
            <RaisedButton
-             label="Sign Up to Debate"
+             label="Create Event"
              primary={true}
              style={{marginTop: '15px'}}
              onClick={(event) => this.handleCreateEventClick(event)}
